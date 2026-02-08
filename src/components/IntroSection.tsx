@@ -1,20 +1,20 @@
-import { Coffee, Cat, Armchair } from 'lucide-react';
+import { Coffee, Cat, Armchair } from "lucide-react";
 
 const highlights = [
   {
     icon: Coffee,
-    title: 'Coffee & Food',
-    description: 'Specialty drinks and fresh homemade treats',
+    title: "Coffee & Food",
+    description: "Specialty drinks and fresh homemade treats",
   },
   {
     icon: Cat,
-    title: 'Cat Café Experience',
-    description: 'Spend time with our adorable rescue cats',
+    title: "Cat Café Experience",
+    description: "Spend time with our adorable rescue cats",
   },
   {
     icon: Armchair,
-    title: 'Cozy Space',
-    description: 'Relax in our warm, welcoming atmosphere',
+    title: "Cozy Space",
+    description: "Relax in our warm, welcoming atmosphere",
   },
 ];
 
@@ -59,7 +59,7 @@ const IntroSection = () => {
             Follow us for daily cat updates and café moments
           </p>
           <a
-            href="https://instagram.com/nekoandkopi"
+            href="https://www.instagram.com/nekocafelk/"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-medium transition-colors link-underline"

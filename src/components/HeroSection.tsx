@@ -1,14 +1,25 @@
-import { Button } from '@/components/ui/button';
-import { MessageCircle, ChevronDown } from 'lucide-react';
-import heroImage from '@/assets/hero-cafe.jpg';
+import { Button } from "@/components/ui/button";
+import { ChevronDown } from "lucide-react";
+import heroImage from "@/assets/hero-cafe.jpg";
+import { useEffect, useState } from "react";
 
 const HeroSection = () => {
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
     }
   };
+
+  const [offset, setOffset] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setOffset(window.scrollY);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <section
@@ -16,13 +27,16 @@ const HeroSection = () => {
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
       {/* Background Image with Overlay */}
-      <div className="absolute inset-0">
+      <div 
+        className="absolute inset-0 z-0 will-change-transform"
+        style={{ transform: `translateY(${offset * 0.5}px)` }}
+      >
         <img
           src={heroImage}
           alt="Cozy cat café interior"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black/70" />
       </div>
 
       {/* Content */}
@@ -36,35 +50,18 @@ const HeroSection = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button
-              onClick={() => scrollToSection('menu')}
+              onClick={() => scrollToSection("menu")}
               size="lg"
               className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-6 text-base font-medium w-full sm:w-auto"
             >
               View Menu
             </Button>
-            <Button
-              asChild
-              variant="outline"
-              size="lg"
-              className="border-white/40 text-white hover:bg-white/10 hover:text-white px-8 py-6 text-base font-medium w-full sm:w-auto bg-transparent"
-            >
-              <a
-                href="https://wa.me/1234567890"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2"
-              >
-                <MessageCircle className="w-5 h-5" />
-                Contact Us
-              </a>
-            </Button>
           </div>
         </div>
-
         {/* Scroll Indicator */}
         <button
-          onClick={() => scrollToSection('intro')}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/60 hover:text-white transition-colors animate-bounce"
+          onClick={() => scrollToSection("intro")}
+          className="absolute bottom-8 left-0 right-0 mx-auto w-fit text-white/60 hover:text-white transition-colors animate-bounce z-20"
           aria-label="Scroll down"
         >
           <ChevronDown className="w-8 h-8" />

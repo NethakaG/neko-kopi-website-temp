@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, MessageCircle } from 'lucide-react';
+import { Menu, X, MessageCircle, Sun, Moon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useTheme } from '@/components/ThemeProvider';
 
 const navLinks = [
   { href: '#home', label: 'Home' },
@@ -13,6 +14,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [isScrolled, setIsScrolled] = useState(false);
+  const { theme, setTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -91,12 +93,22 @@ const Navbar = () => {
               </a>
             ))}
             <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+              className="text-foreground hover:bg-muted"
+            >
+              <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+              <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+              <span className="sr-only">Toggle theme</span>
+            </Button>
+            <Button
               asChild
               size="sm"
               className="bg-primary hover:bg-primary/90 text-primary-foreground gap-2"
             >
               <a
-                href="https://wa.me/1234567890"
+                href="https://wa.me/941231231234"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -109,12 +121,21 @@ const Navbar = () => {
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center gap-3">
             <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+              className="text-foreground"
+            >
+              <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+              <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+            </Button>
+            <Button
               asChild
               size="sm"
               className="bg-primary hover:bg-primary/90 text-primary-foreground"
             >
               <a
-                href="https://wa.me/1234567890"
+                href="https://wa.me/941231231234"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -133,7 +154,7 @@ const Navbar = () => {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden absolute top-full left-0 right-0 bg-background/98 backdrop-blur-md border-b border-border animate-slide-in">
+          <div className="md:hidden absolute top-full left-0 right-0 bg-background border-b border-border animate-slide-in shadow-lg">
             <div className="section-container py-4 flex flex-col gap-2">
               {navLinks.map((link) => (
                 <a
