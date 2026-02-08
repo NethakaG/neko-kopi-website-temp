@@ -592,43 +592,8 @@ const MenuSection = () => {
 
         {/* Footer Info */}
         <div className="mt-16 pt-8 border-t border-border">
-          <div className="max-w-3xl mx-auto space-y-4">
-            <div className="text-center space-y-2">
-              <p className="text-sm font-medium text-foreground">
-                📍 319/4, 05 Nawala Rd, Colombo 00500
-              </p>
-              <p className="text-sm text-muted-foreground">
-                WhatsApp:{" "}
-                <a
-                  href="https://wa.me/94123123123"
-                  className="text-primary hover:underline"
-                >
-                  +94 123 123 123
-                </a>
-              </p>
-              <p className="text-sm text-muted-foreground">
-                Instagram:{" "}
-                <a
-                  href="https://www.instagram.com/nekocafelk/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-primary hover:underline"
-                >
-                  @nekocafelk
-                </a>
-              </p>
-            </div>
-            <div className="text-center pt-4">
-              <p className="text-sm font-medium text-foreground mb-2">
-                Opening Hours
-              </p>
-              <div className="text-sm text-muted-foreground space-y-1">
-                <p>Monday - Tuesday: Closed</p>
-                <p>Wednesday - Friday: 9:00 AM - 7:00 PM</p>
-                <p>Saturday - Sunday: 9:00 AM - 9:00 PM</p>
-              </div>
-            </div>
-            <p className="text-center text-xs text-muted-foreground pt-4">
+          <div className="max-w-3xl mx-auto">
+            <p className="text-center text-xs text-muted-foreground">
               All prices are in Sri Lankan Rupees (LKR). Prices include tax.
             </p>
           </div>
